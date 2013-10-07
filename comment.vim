@@ -5,7 +5,7 @@ fu! Comment()
 		let l:comm_char = "#"
 	elseif &filetype == "python"
 		let l:comm_char = "#"
-	elseif &filetype == "c" || &filetype == "c++"
+	elseif &filetype == "c" || &filetype == "c++" || &filetype == "cpp"
 		let l:comm_char = "//"
 	endif
 
