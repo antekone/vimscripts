@@ -9,6 +9,102 @@ fu! FindWScriptDir()
 	return -1
 endfunction
 
+fu! InsertHeaderGuard()
+	let l:lines = line("$")
+	let l:idx = 0
+
+	let l:generated_guard = "__hdr_" . expand('%:t:r') . "_h_"
+	echo l:generated_guard
+
+	while l:idx < l:lines
+		if match(getline(l:idx), "^#ifndef " . l:generated_guard) != -1
+			echo "Guard found at line " . l:idx ", not casting HeaderGuard magic."
+			return
+		endif
+		let l:idx += 1
+	endwhile
+
+	call setline(1, "#ifndef " . l:generated_guard)
+	call setline(2, "#define " . l:generated_guard)
+	call setline(3, "")
+	call setline(4, "// enter code here")
+	call setline(5, "")
+	call setline(6, "#endif // " . l:generated_guard)
+
+	/enter code here
+endfunction
+
+fu! InsertDialogClass()
+	let l:fn = expand('%:t:r')
+	let l:lines = []
+	let l:lines += ["#include <QDialog>"]
+	let l:lines += ["#include \"state/StatePersistenceAware.h\""]
+	let l:lines += ["#include \"ui_". l:fn .".h\""]
+	let l:lines += [""]
+	let l:lines += ["BEGIN_ERROR_DEFS_NS(". l:fn ."Error)"]
+	let l:lines += ["DECLARE_ERROR(PlaceholderError) { }"]
+	let l:lines += ["END_ERROR_DEFS_NS"]
+	let l:lines += [""]
+	let l:lines += ["class ". l:fn .": public QDialog, public virtual StatePersistenceAware {"]
+	let l:lines += ["	Q_OBJECT"]
+	let l:lines += [""]
+	let l:lines += ["private:"]
+	let l:lines += ["	Ui::". l:fn ." ui;"]
+	let l:lines += [""]
+	let l:lines += ["	void saveSettings();"]
+	let l:lines += [""]
+	let l:lines += ["private Q_SLOTS:"]
+	let l:lines += [""]
+	let l:lines += ["public:"]
+	let l:lines += ["	". l:fn ."(StatePersistence& sparent);"]
+	let l:lines += ["	virtual ~". l:fn ."();"]
+	let l:lines += [""]
+	let l:lines += ["};"]
+	let l:lines += [""]
+	call append(".", l:lines)
+endfunction
+
+fu! InsertDialogImplClass()
+	let l:fn = expand('%:t:r')
+	let l:lines = []
+	let l:lines += ["#include \"". l:fn .".h\""]
+	let l:lines += [""]
+	let l:lines += [l:fn ."::". l:fn ."(StatePersistence& sparent): StatePersistenceAware(sparent, \"". l:fn ."\") {"]
+	let l:lines += ["	ui.setupUi(this);"]
+	let l:lines += ["	P_LOAD_SIZE;"]
+	let l:lines += [""]
+	let l:lines += ["	setWindowTitle(tr(\"". l:fn ."\"));"]
+	let l:lines += ["}"]
+	let l:lines += [""]
+	let l:lines += [l:fn ."::~". l:fn ."() {"]
+	let l:lines += ["	saveSettings();"]
+	let l:lines += ["}"]
+	let l:lines += [""]
+	let l:lines += ["void ". l:fn ."::saveSettings() {"]
+	let l:lines += ["	P_SAVE_SIZE;"]
+	let l:lines += ["}"]
+	call append(".", l:lines)
+	call InsertMocTag()
+endfunction
+
+fu! InsertClass()
+	let l:filename = expand('%:t:r')
+	let l:extension = expand('%:t:e')
+	if match(l:filename, "Dialog$") != -1
+		if l:extension == "h"
+			call InsertDialogClass()
+		elseif l:extension == "cpp"
+			call InsertDialogImplClass()
+		else
+			echo "Dialog class selected, but don't know what type of file is this."
+			return
+		endif
+	else
+		echo "Not sure which class you want to create."
+		return
+	endif
+endfunction
+
 fu! InsertMocTag()
 	let l:lines = line("$")
 	let l:idx = 0
