@@ -26,12 +26,12 @@ fu! InsertHeaderGuard()
 
 	call setline(1, "#ifndef " . l:generated_guard)
 	call setline(2, "#define " . l:generated_guard)
-	call setline(3, "")
-	call setline(4, "// enter code here")
-	call setline(5, "")
-	call setline(6, "#endif // " . l:generated_guard)
+	call setline(3, "// enter code here")
+	call setline(4, "")
+	call setline(5, "#endif // " . l:generated_guard)
 
 	/enter code here
+	d
 endfunction
 
 fu! InsertDialogClass()
@@ -84,7 +84,6 @@ fu! InsertDialogImplClass()
 	let l:lines += ["	P_SAVE_SIZE;"]
 	let l:lines += ["}"]
 	call append(".", l:lines)
-	call InsertMocTag()
 endfunction
 
 fu! InsertClass()
@@ -92,9 +91,11 @@ fu! InsertClass()
 	let l:extension = expand('%:t:e')
 	if match(l:filename, "Dialog$") != -1
 		if l:extension == "h"
+			call InsertHeaderGuard()
 			call InsertDialogClass()
 		elseif l:extension == "cpp"
 			call InsertDialogImplClass()
+			call InsertMocTag()
 		else
 			echo "Dialog class selected, but don't know what type of file is this."
 			return
