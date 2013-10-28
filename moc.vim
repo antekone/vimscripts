@@ -87,7 +87,7 @@ fu! InsertDialogImplClass()
 	let l:lines += ["	P_SAVE_SIZE;"]
 	let l:lines += ["}"]
 	let l:lines += [""]
-	let l:lines += ["void ". l:fn ."::validate() {"]
+	let l:lines += ["bool ". l:fn ."::validate() {"]
 	let l:lines += ["	// TODO: code here"]
 	let l:lines += ["	return false; // return true if all is ok"]
 	let l:lines += ["}"]
@@ -98,7 +98,7 @@ fu! InsertDialogImplClass()
 	let l:lines += ["		if(! validate()) return;"]
 	let l:lines += ["	}"]
 	let l:lines += [""]
-	let l:lines += ["	QDialog::done(); // closes the dialog"]
+	let l:lines += ["	QDialog::done(r); // closes the dialog"]
 	let l:lines += ["}"]
 	call append(".", l:lines)
 endfunction
