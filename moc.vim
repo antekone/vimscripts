@@ -34,6 +34,17 @@ fu! InsertHeaderGuard()
 	d
 endfunction
 
+fu! InsertTestContent()
+	let l:fn = expand('%:t:r')
+	let l:lines = []
+	let l:lines += ["#include \"gtest/gtest.h\""]
+	let l:lines += ["#include \"dir/class.h\""]
+	let l:lines += [""]
+	let l:lines += ["TEST(SuiteName, TestName) {"]
+	let l:lines += ["}"]
+	call append(".", l:lines)
+endfunction
+
 fu! InsertDialogClass()
 	let l:fn = expand('%:t:r')
 	let l:lines = []
@@ -116,6 +127,10 @@ fu! InsertClass()
 		else
 			echo "Dialog class selected, but don't know what type of file is this."
 			return
+		endif
+	elseif match(l:filename, "^Test") != -1
+		if l:extension == "cpp"
+			call InsertTestContent()
 		endif
 	else
 		echo "Not sure which class you want to create."
