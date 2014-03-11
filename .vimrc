@@ -3,7 +3,6 @@ set modelines=5
 set nobomb
 set endofline
 set nu
-set rnu
 set nocompatible
 set backspace=indent,eol,start
 "set tw=80
@@ -106,6 +105,7 @@ cnoremap <C-v> <C-r>+
 vnoremap <return> <esc>
 vnoremap <esc> <nop>
 
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 source ~/.vim/comment.vim
 source ~/.vim/guids.vim
 source ~/.vim/moc.vim
