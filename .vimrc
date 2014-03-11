@@ -105,7 +105,14 @@ cnoremap <C-v> <C-r>+
 vnoremap <return> <esc>
 vnoremap <esc> <nop>
 
+" CtrlP configuration
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,*.ilk,*.pdb,*.dll,*.so,*/tmp/*
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/]\.(git|hg|svn|bzr)$',
+	\ 'file': '\v\.(exe|so|dll)$',
+\ }
+
 source ~/.vim/comment.vim
 source ~/.vim/guids.vim
 source ~/.vim/moc.vim
