@@ -144,6 +144,7 @@ set runtimepath^=~/.vim/bundle/vim-fugitive
 set runtimepath^=~/.vim/bundle/ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories=["ultisnips"]
 " }}}
 " Custom scripts {{{
 source ~/.vim/comment.vim
