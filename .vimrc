@@ -110,6 +110,8 @@ inoremap <F10> <esc>
 inoremap <esc> <nop>
 inoremap <C-o> <esc>O
 
+nnoremap <leader>` :A!<cr>
+
 " Insert yanked text to the command line buffer by Shift+Insert
 cnoremap <S-Insert> <C-r>"
 " Insert system-yanked text to the command line buffer by Ctrl+V
@@ -120,6 +122,10 @@ vnoremap <esc> <nop>
 
 " CtrlP configuration
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/bundle/vim-cpp-enhanced-highlight
+set runtimepath^=~/.vim/bundle/Gundo
+set runtimepath^=~/.vim/bundle/vim-fugitive
+
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,*.ilk,*.pdb,*.dll,*.so,*/tmp/*
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/]\.(git|hg|svn|bzr)$',
@@ -129,6 +135,7 @@ let g:ctrlp_custom_ignore = {
 source ~/.vim/comment.vim
 source ~/.vim/guids.vim
 source ~/.vim/moc.vim
+source ~/.vim/bundle/a.vim
 "source C:/Program Files (x86)/vim/vimfiles/ftplugin/python/pep8.vim
 syntax on
 
