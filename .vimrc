@@ -1,7 +1,11 @@
+" Close all folds: zM
+" Toggle fold:     za
+
+" Preamble {{{
 if has("win32")
-set gfn=Terminus:h9:cEASTEUROPE
+	set gfn=Terminus:h9:cEASTEUROPE
 else
-set gfn=Liberation\ Mono\ 9
+	set gfn=Liberation\ Mono\ 9
 endif
 set modelines=5
 set nobomb
@@ -42,17 +46,15 @@ set title
 set nowrap
 set linebreak
 set virtualedit=all
-"set list
-
+syntax on
+"set list " Display unprintable characters?
+" }}}
+" Makeprg configuration {{{
 map <F9> :make<CR><CR>
-set makeprg=gmake
-
-let mapleader = "\\"
-nnoremap <leader># :source ~/.vimrc<cr>
-nnoremap <leader>. :vsplit ~/.vimrc<cr>
-nnoremap <leader>[ :cp<cr>
-nnoremap <leader>] :cn<cr>
-
+if has("win32")
+	set makeprg=gmake
+endif
+" }}}
 " Cursor stuff {{{
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -73,8 +75,13 @@ vnoremap k gk
 noremap H ^
 noremap L g_
 " }}}
-
 " Leader key {{{
+let mapleader = "\\"
+nnoremap <leader># :source ~/.vimrc<cr>
+nnoremap <leader>. :vsplit ~/.vimrc<cr>
+nnoremap <leader>[ :cp<cr>
+nnoremap <leader>] :cn<cr>
+
 nnoremap <leader>/  :call Comment()<cr>
 vnoremap <leader>/  :call Comment()<cr>
 nnoremap <leader><space> :noh<cr>
@@ -89,7 +96,6 @@ inoremap <leader>s <esc>:tabnext<cr>li
 nnoremap <leader>s :tabnext<cr>
 nnoremap <leader>q :q<cr>
 " }}}
-
 " Navigation, etc {{{
 nnoremap <A-Left> <C-t>
 nnoremap <A-Right> <C-]>
@@ -99,46 +105,53 @@ nnoremap <space> viwy
 vnoremap > >gv
 vnoremap < <gv
 " }}}
-
 " Clipboard {{{
 inoremap <C-v> <esc>"+gpa
 vnoremap <C-y> "+y
 " }}}
-
+" ESC {{{
 inoremap jk <esc>
 inoremap <F10> <esc>
 inoremap <esc> <nop>
 inoremap <C-o> <esc>O
-
-nnoremap <leader>` :A!<cr>
-
+vnoremap <return> <esc>
+vnoremap <esc> <nop>
+" }}}
+" Ctrl+V paste configuration {{{
 " Insert yanked text to the command line buffer by Shift+Insert
 cnoremap <S-Insert> <C-r>"
 " Insert system-yanked text to the command line buffer by Ctrl+V
 cnoremap <C-v> <C-r>+
-
-vnoremap <return> <esc>
-vnoremap <esc> <nop>
-
-" CtrlP configuration
+" }}}
+" CtrlP configuration {{{
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-set runtimepath^=~/.vim/bundle/vim-cpp-enhanced-highlight
-set runtimepath^=~/.vim/bundle/Gundo
-set runtimepath^=~/.vim/bundle/vim-fugitive
-
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,*.ilk,*.pdb,*.dll,*.so,*/tmp/*
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/]\.(git|hg|svn|bzr)$',
 	\ 'file': '\v\.(exe|so|dll)$',
 \ }
-
+" }}}
+" Vim-C++ Enhanced Highlight configuration {{{
+set runtimepath^=~/.vim/bundle/vim-cpp-enhanced-highlight
+" }}}
+" Gundo configuration {{{
+set runtimepath^=~/.vim/bundle/Gundo
+" }}}
+" Vim-fugitive configuration {{{
+set runtimepath^=~/.vim/bundle/vim-fugitive
+" }}}
+" UltiSnips configuration {{{
+set runtimepath^=~/.vim/bundle/ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsEditSplit="vertical"
+" }}}
+" Custom scripts {{{
 source ~/.vim/comment.vim
 source ~/.vim/guids.vim
 source ~/.vim/moc.vim
 source ~/.vim/bundle/a.vim
-"source C:/Program Files (x86)/vim/vimfiles/ftplugin/python/pep8.vim
-syntax on
-
+nnoremap <leader>` :A!<cr>
+" }}}
 " Cursorline {{{
 augroup cursorline
 	autocmd!
@@ -155,3 +168,4 @@ augroup end
 
 " Remove trailing whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
+
