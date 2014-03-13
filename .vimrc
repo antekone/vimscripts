@@ -1,11 +1,15 @@
+if has("win32")
 set gfn=Terminus:h9:cEASTEUROPE
+else
+set gfn=Liberation\ Mono\ 9
+endif
 set modelines=5
 set nobomb
 set endofline
 set nu
 set nocompatible
 set backspace=indent,eol,start
-"set tw=80
+set tw=80
 set ts=4
 set sw=4
 set ai
@@ -75,6 +79,15 @@ nnoremap <leader>/  :call Comment()<cr>
 vnoremap <leader>/  :call Comment()<cr>
 nnoremap <leader><space> :noh<cr>
 nnoremap <silent><leader>hh :setl hls<CR>:let @/="\\<<C-r><C-w>\\>"<CR>
+inoremap <leader><tab> <esc>l
+
+inoremap <leader>t <esc>:tabnew<cr>li
+nnoremap <leader>t :tabnew<cr>
+inoremap <leader>a <esc>:tabprev<cr>li
+nnoremap <leader>a :tabprev<cr>
+inoremap <leader>s <esc>:tabnext<cr>li
+nnoremap <leader>s :tabnext<cr>
+nnoremap <leader>q :q<cr>
 " }}}
 
 " Navigation, etc {{{
@@ -123,11 +136,12 @@ syntax on
 augroup cursorline
 	autocmd!
 
-"	au WinLeave,InsertEnter * set nocursorline
-"	au WinEnter,InsertLeave * set cursorline
+	"au WinLeave,InsertEnter * set nocursorline
+	au WinEnter,InsertLeave * set cursorline
 
-"	au WinLeave,InsertEnter * set nocursorcolumn
-"	au WinEnter,InsertLeave * set cursorcolumn
+	"au WinLeave,InsertEnter * set nocursorcolumn
+	"au WinEnter,InsertLeave * set cursorcolumn
+
 	hi CursorLine guibg=#202020
 augroup end
 " }}}
