@@ -172,7 +172,7 @@ augroup cursorline
 	autocmd!
 
 	"au WinLeave,InsertEnter * set nocursorline
-	au WinEnter,InsertLeave * set cursorline
+	"au WinEnter,InsertLeave * set cursorline
 
 	"au WinLeave,InsertEnter * set nocursorcolumn
 	"au WinEnter,InsertLeave * set cursorcolumn
