@@ -45,6 +45,21 @@ fu! InsertTestContent()
 	call append(".", l:lines)
 endfunction
 
+fu! InsertWScript()
+	let l:lines = []
+	let l:lines += ['def configure(conf):']
+	let l:lines += ['	conf.load("g++")']
+	let l:lines += ['']
+	let l:lines += ['def options(opts):']
+	let l:lines += ['	opts.load("g++")']
+	let l:lines += ['']
+	let l:lines += ['def build(bld):']
+	let l:lines += ['	bld.load("g++")']
+	let l:lines += ['	sources = ["file.cpp"]']
+	let l:lines += ['	bld.program(...)']
+	call append(".", l:lines)
+endfunction
+
 fu! InsertDialogClass()
 	let l:fn = expand('%:t:r')
 	let l:lines = []
@@ -72,6 +87,33 @@ fu! InsertDialogClass()
 	let l:lines += ["	virtual ~". l:fn ."();"]
 	let l:lines += [""]
 	let l:lines += ["	void done(int r);"]
+	let l:lines += [""]
+	let l:lines += ["};"]
+	let l:lines += [""]
+	call append(".", l:lines)
+endfunction
+
+fu! InsertWidgetClass()
+	let l:fn = expand('%:t:r')
+	let l:lines = []
+	let l:lines += ["#include <QWidget>"]
+	let l:lines += ["#include \"ui_". l:fn .".h\""]
+	let l:lines += [""]
+	let l:lines += ["BEGIN_ERROR_DEFS_NS(". l:fn ."Error)"]
+	let l:lines += ["DECLARE_ERROR(PlaceholderError) { }"]
+	let l:lines += ["END_ERROR_DEFS_NS"]
+	let l:lines += [""]
+	let l:lines += ["class ". l:fn .": public QWidget {"]
+	let l:lines += ["	Q_OBJECT"]
+	let l:lines += [""]
+	let l:lines += ["private:"]
+	let l:lines += ["	Ui::". l:fn ." ui;"]
+	let l:lines += [""]
+	let l:lines += ["private Q_SLOTS:"]
+	let l:lines += [""]
+	let l:lines += ["public:"]
+	let l:lines += ["	". l:fn ."();"]
+	let l:lines += ["	virtual ~". l:fn ."();"]
 	let l:lines += [""]
 	let l:lines += ["};"]
 	let l:lines += [""]
@@ -114,6 +156,21 @@ fu! InsertDialogImplClass()
 	call append(".", l:lines)
 endfunction
 
+fu! InsertWidgetImplClass()
+	let l:fn = expand('%:t:r')
+	let l:lines = []
+	let l:lines += ["#include \"". l:fn .".h\""]
+	let l:lines += [""]
+	let l:lines += [l:fn ."::". l:fn ."() {"]
+	let l:lines += ["	ui.setupUi(this);"]
+	let l:lines += ["}"]
+	let l:lines += [""]
+	let l:lines += [l:fn ."::~". l:fn ."() {"]
+	let l:lines += ["}"]
+	let l:lines += [""]
+	call append(".", l:lines)
+endfunction
+
 fu! InsertClass()
 	let l:filename = expand('%:t:r')
 	let l:extension = expand('%:t:e')
@@ -131,6 +188,17 @@ fu! InsertClass()
 	elseif match(l:filename, "^Test") != -1
 		if l:extension == "cpp"
 			call InsertTestContent()
+		endif
+	elseif match(l:filename, "Widget$") != -1
+		if l:extension == "h"
+			call InsertHeaderGuard()
+			call InsertWidgetClass()
+		elseif l:extension == "cpp"
+			call InsertWidgetImplClass()
+			call InsertMocTag()
+		else
+			echo "Widget class selected, but don't know what type of file is this."
+			return
 		endif
 	else
 		echo "Not sure which class you want to create."
