@@ -6,7 +6,7 @@ if has("win32")
 	"set gfn=Terminus:h9:cEASTEUROPE
 	set gfn=Liberation\ Mono:h9:cEASTEUROPE
 else
-	set gfn=Liberation\ Mono\ 9
+	set gfn=Inconsolata\ Medium\ 11
 endif
 set modelines=5
 set nobomb
