@@ -24,6 +24,7 @@ set go-=a
 set go+=c " don't use GUI dialogs
 set go-=e " don't show graphical tabs
 set ruler
+set lazyredraw
 colors slate
 " fix slate's CursorLine background color
 set hlsearch
@@ -158,7 +159,9 @@ augroup cursorline
 	autocmd!
 
 	"au WinLeave,InsertEnter * set nocursorline
-	au WinEnter,InsertLeave * set cursorline
+	" Cursorline jest wyłączony, bo nie wygląda zbyt
+	" dobrze w konsoli.
+	"au WinEnter,InsertLeave * set cursorline
 
 	"au WinLeave,InsertEnter * set nocursorcolumn
 	"au WinEnter,InsertLeave * set cursorcolumn
