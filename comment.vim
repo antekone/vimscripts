@@ -11,6 +11,9 @@ fu! Comment()
 		let l:extended1 = 1
 	elseif &filetype == "vim"
 		let l:comm_char = "\""
+	elseif &filetype == "javascript" || &filetype == "html"
+		let l:comm_char = "//"
+		let l:extended1 = 1
 	endif
 
 	let l:line = getline('.')

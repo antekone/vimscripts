@@ -3,7 +3,8 @@
 
 " Preamble {{{
 if has("win32")
-	set gfn=Terminus:h9:cEASTEUROPE
+	"set gfn=Terminus:h9:cEASTEUROPE
+	set gfn=Liberation\ Mono:h9:cEASTEUROPE
 else
 	set gfn=Liberation\ Mono\ 9
 endif
@@ -57,14 +58,27 @@ if has("win32")
 endif
 " }}}
 " Cursor stuff {{{
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+nnoremap <up> <C-w>+
+nnoremap <S-up> 10<C-w>+
+nnoremap <C-up> <C-w>k
+
+nnoremap <down> <C-w>-
+nnoremap <S-down> 10<C-w>-
+nnoremap <C-down> <C-w>j
+
+nnoremap <left> <C-w><
+nnoremap <S-left> 20<C-w><
+nnoremap <C-left> <C-w>h
+
+nnoremap <right> <C-w>>
+nnoremap <S-right> 20<C-w>>
+nnoremap <C-right> <C-w>l
+
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
@@ -118,13 +132,13 @@ inoremap <C-o> <esc>O
 vnoremap <return> <esc>
 vnoremap <esc> <nop>
 " }}}
-" Ctrl+V paste configuration {{{
+" Ctrl+V paste {{{
 " Insert yanked text to the command line buffer by Shift+Insert
 cnoremap <S-Insert> <C-r>"
 " Insert system-yanked text to the command line buffer by Ctrl+V
 cnoremap <C-v> <C-r>+
 " }}}
-" CtrlP configuration {{{
+" CtrlP {{{
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,*.ilk,*.pdb,*.dll,*.so,*/tmp/*
 let g:ctrlp_custom_ignore = {
@@ -132,16 +146,16 @@ let g:ctrlp_custom_ignore = {
 	\ 'file': '\v\.(exe|so|dll)$',
 \ }
 " }}}
-" Vim-C++ Enhanced Highlight configuration {{{
+" Vim-C++ Enhanced Highlight {{{
 set runtimepath^=~/.vim/bundle/vim-cpp-enhanced-highlight
 " }}}
-" Gundo configuration {{{
+" Gundo {{{
 set runtimepath^=~/.vim/bundle/Gundo
 " }}}
-" Vim-fugitive configuration {{{
+" Vim-fugitive {{{
 set runtimepath^=~/.vim/bundle/vim-fugitive
 " }}}
-" UltiSnips configuration {{{
+" UltiSnips {{{
 set runtimepath^=~/.vim/bundle/ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsEditSplit="vertical"
@@ -169,7 +183,18 @@ augroup cursorline
 	hi CursorLine guibg=#202020
 augroup end
 " }}}
+" Powerline {{{
+set laststatus=2
+set encoding=utf-8
+" }}}
 
 " Remove trailing whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Vundle {{{
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc('~/.vim/vundle')
+source ~/.vim/vundle-rc.vim
+filetype plugin indent on
+" }}}
