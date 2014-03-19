@@ -188,6 +188,11 @@ set laststatus=2
 set encoding=utf-8
 " }}}
 
+command! FindC vimgrep <cword> **/*.cpp
+command! FindH vimgrep <cword> **/*.h
+command! Find  vimgrep <cword> **/*.cpp **/*.h
+command! -nargs=+ FindAll vimgrep <args> **/*.cpp **/*.h
+
 " Remove trailing whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
 
