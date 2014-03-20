@@ -6,7 +6,7 @@ if has("win32")
 	"set gfn=Terminus:h9:cEASTEUROPE
 	set gfn=Consolas:h11:cEASTEUROPE
 else
-	set gfn=Liberation\ Mono\ 9
+	set gfn=Inconsolata\ Medium\ 11
 endif
 set modelines=5
 set nobomb
@@ -25,6 +25,7 @@ set go-=a
 set go+=c " don't use GUI dialogs
 set go-=e " don't show graphical tabs
 set ruler
+set lazyredraw
 colors slate
 " fix slate's CursorLine background color
 set hlsearch
@@ -173,6 +174,8 @@ augroup cursorline
 	autocmd!
 
 	"au WinLeave,InsertEnter * set nocursorline
+	" Cursorline jest wyłączony, bo nie wygląda zbyt
+	" dobrze w konsoli.
 	"au WinEnter,InsertLeave * set cursorline
 
 	"au WinLeave,InsertEnter * set nocursorcolumn
@@ -185,6 +188,11 @@ augroup end
 set laststatus=2
 set encoding=utf-8
 " }}}
+
+command! FindC vimgrep <cword> **/*.cpp
+command! FindH vimgrep <cword> **/*.h
+command! Find  vimgrep <cword> **/*.cpp **/*.h
+command! -nargs=+ FindAll vimgrep <args> **/*.cpp **/*.h
 
 " Remove trailing whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
