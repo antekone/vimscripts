@@ -167,7 +167,16 @@ source ~/.vim/comment.vim
 source ~/.vim/guids.vim
 source ~/.vim/moc.vim
 source ~/.vim/bundle/a.vim
+source ~/.vim/find.vim
 nnoremap <leader>` :A!<cr>
+
+command! CPP vimgrep <cword> **/*.cpp
+command! H vimgrep <cword> **/*.h
+command! CPPH  vimgrep <cword> **/*.cpp **/*.h
+command! RB vimgrep <cword> **/*.rb
+command! PY vimgrep <cword> **/*.py
+command! -nargs=+ FindAll vimgrep <args> **/*.cpp **/*.h
+
 " }}}
 " Cursorline {{{
 augroup cursorline
@@ -188,11 +197,6 @@ augroup end
 set laststatus=2
 set encoding=utf-8
 " }}}
-
-command! FindC vimgrep <cword> **/*.cpp
-command! FindH vimgrep <cword> **/*.h
-command! Find  vimgrep <cword> **/*.cpp **/*.h
-command! -nargs=+ FindAll vimgrep <args> **/*.cpp **/*.h
 
 " Remove trailing whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
