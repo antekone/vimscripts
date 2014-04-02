@@ -111,6 +111,7 @@ nnoremap <leader>a :tabprev<cr>
 inoremap <leader>s <esc>:tabnext<cr>li
 nnoremap <leader>s :tabnext<cr>
 nnoremap <leader>q :q<cr>
+inoremap <leader>/ \
 " }}}
 " Navigation, etc {{{
 nnoremap <A-Left> <C-t>
@@ -144,7 +145,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,*.ilk,*.pdb,*.dll,*.so,*/tmp/*
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/]\.(git|hg|svn|bzr)$',
-	\ 'file': '\v\.(exe|so|dll)$',
+	\ 'file': '\v\.(exe|so|dll|gch)$',
 \ }
 " }}}
 " Vim-C++ Enhanced Highlight {{{
@@ -196,6 +197,9 @@ augroup end
 " Powerline {{{
 set laststatus=2
 set encoding=utf-8
+" }}}
+" EasyGrep {{{
+set gp=grep\ -Hn
 " }}}
 
 " Remove trailing whitespaces
