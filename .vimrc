@@ -4,7 +4,8 @@
 " Preamble {{{
 if has("win32")
 	"set gfn=Terminus:h9:cEASTEUROPE
-	set gfn=Consolas:h11:cEASTEUROPE
+	"set gfn=Consolas:h11:cEASTEUROPE
+	set gfn=Liberation_Mono:h9:cEASTEUROPE
 else
 	set gfn=Inconsolata\ Medium\ 11
 endif
@@ -161,7 +162,10 @@ set runtimepath^=~/.vim/bundle/vim-fugitive
 set runtimepath^=~/.vim/bundle/ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDirectories=["ultisnips"]
+let g:UltiSnipsSnippetDirectories=["ultisnips","ultisnips2"]
+command! Snippets e ~\.vim\bundle\ultisnips\ultisnips2\all.snippets
+command! SnippetsRuby e ~\.vim\bundle\ultisnips\ultisnips2\ruby.snippets
+command! SnippetsC e ~\.vim\bundle\ultisnips\ultisnips2\c.snippets
 " }}}
 " Custom scripts {{{
 source ~/.vim/comment.vim
