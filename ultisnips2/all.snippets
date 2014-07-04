@@ -1,0 +1,19 @@
+snippet examplesnippet
+This is an example snippet.
+endsnippet
+
+snippet TEST
+TEST($1, $2) {
+	$0
+}
+endsnippet
+
+snippet TESTSM
+TEST(SegmentManager, $2) {
+	START_HEXEDIT_TEST(vis, inst, intf);
+	SegmentManager sm(intf);
+	$0
+
+	END_HEXEDIT_TEST(vis, inst, intf);
+}
+endsnippet
