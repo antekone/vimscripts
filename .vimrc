@@ -160,6 +160,7 @@ set runtimepath^=~/.vim/bundle/vim-fugitive
 " }}}
 " UltiSnips {{{
 set runtimepath^=~/.vim/bundle/ultisnips
+set runtimepath^=~/.vim
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories=["ultisnips","ultisnips2"]
