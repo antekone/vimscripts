@@ -1,3 +1,5 @@
 Bundle 'gmarik/vundle'
 Bundle 'surround.vim'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'zhaocai/linepower.vim'
+Bundle 'honza/vim-snippets'
