@@ -6,7 +6,7 @@ if has("win32")
 	"set gfn=Terminus:h9:cEASTEUROPE
 	set gfn=Liberation\ Mono:h9:cEASTEUROPE
 else
-	set gfn=Liberation\ Mono\ 9
+	source ~/.vimfont
 endif
 set modelines=5
 set nobomb
@@ -161,6 +161,9 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories=["ultisnips"]
 " }}}
+" CSApprox {{{
+set runtimepath^=~/.vim/bundle/CSApprox
+" }}}
 " Custom scripts {{{
 source ~/.vim/comment.vim
 source ~/.vim/guids.vim
@@ -186,6 +189,7 @@ augroup end
 " Powerline {{{
 set laststatus=2
 set encoding=utf-8
+let g:Powerline_colorscheme = 'solarized256'
 " }}}
 
 " Remove trailing whitespaces
