@@ -9,6 +9,7 @@ if has("win32")
 else
 	source ~/.vimfont
 endif
+
 set modelines=5
 set nobomb
 set endofline
@@ -41,7 +42,6 @@ set foldenable
 set foldmethod=marker
 set foldlevelstart=0
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
-
 set ttyfast
 set linespace=0
 set lazyredraw
@@ -169,7 +169,7 @@ command! SnippetsRuby e ~\.vim\bundle\ultisnips\ultisnips2\ruby.snippets
 command! SnippetsC e ~\.vim\bundle\ultisnips\ultisnips2\c.snippets
 " }}}
 " CSApprox {{{
-set runtimepath^=~/.vim/bundle/CSApprox
+"set runtimepath^=~/.vim/bundle/CSApprox
 " }}}
 " Custom scripts {{{
 source ~/.vim/comment.vim
