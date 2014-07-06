@@ -4,7 +4,8 @@
 " Preamble {{{
 if has("win32")
 	"set gfn=Terminus:h9:cEASTEUROPE
-	set gfn=Liberation\ Mono:h9:cEASTEUROPE
+	"set gfn=Consolas:h11:cEASTEUROPE
+	set gfn=Liberation_Mono:h9:cEASTEUROPE
 else
 	source ~/.vimfont
 endif
@@ -83,6 +84,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
@@ -110,6 +112,7 @@ nnoremap <leader>a :tabprev<cr>
 inoremap <leader>s <esc>:tabnext<cr>li
 nnoremap <leader>s :tabnext<cr>
 nnoremap <leader>q :q<cr>
+inoremap <leader>/ \
 " }}}
 " Navigation, etc {{{
 nnoremap <A-Left> <C-t>
@@ -143,7 +146,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,*.ilk,*.pdb,*.dll,*.so,*/tmp/*
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/]\.(git|hg|svn|bzr)$',
-	\ 'file': '\v\.(exe|so|dll)$',
+	\ 'file': '\v\.(exe|so|dll|gch)$',
 \ }
 " }}}
 " Vim-C++ Enhanced Highlight {{{
@@ -157,9 +160,13 @@ set runtimepath^=~/.vim/bundle/vim-fugitive
 " }}}
 " UltiSnips {{{
 set runtimepath^=~/.vim/bundle/ultisnips
+set runtimepath^=~/.vim
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDirectories=["ultisnips"]
+let g:UltiSnipsSnippetDirectories=["ultisnips","ultisnips2"]
+command! Snippets e ~\.vim\bundle\ultisnips\ultisnips2\all.snippets
+command! SnippetsRuby e ~\.vim\bundle\ultisnips\ultisnips2\ruby.snippets
+command! SnippetsC e ~\.vim\bundle\ultisnips\ultisnips2\c.snippets
 " }}}
 " CSApprox {{{
 set runtimepath^=~/.vim/bundle/CSApprox
@@ -169,7 +176,16 @@ source ~/.vim/comment.vim
 source ~/.vim/guids.vim
 source ~/.vim/moc.vim
 source ~/.vim/bundle/a.vim
+source ~/.vim/find.vim
 nnoremap <leader>` :A!<cr>
+
+command! CPP vimgrep <cword> **/*.cpp
+command! H vimgrep <cword> **/*.h
+command! CPPH  vimgrep <cword> **/*.cpp **/*.h
+command! RB vimgrep <cword> **/*.rb
+command! PY vimgrep <cword> **/*.py
+command! -nargs=+ FindAll vimgrep <args> **/*.cpp **/*.h
+
 " }}}
 " Cursorline {{{
 augroup cursorline
@@ -190,6 +206,9 @@ augroup end
 set laststatus=2
 set encoding=utf-8
 let g:Powerline_colorscheme = 'solarized256'
+" }}}
+" EasyGrep {{{
+set gp=grep\ -Hn
 " }}}
 
 " Remove trailing whitespaces

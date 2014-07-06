@@ -34,6 +34,30 @@ fu! InsertHeaderGuard()
 	d
 endfunction
 
+fu! InsertWScript()
+	let l:fn = expand('%:t:r')
+	let l:lines = []
+	let l:lines += ["# vim:ft=python:"]
+	let l:lines += [""]
+	let l:lines += ["def configure(conf):"]
+	let l:lines += ["	conf.load('g++')"]
+	let l:lines += [""]
+	let l:lines += ["def options(opts):"]
+	let l:lines += ["	opts.load('g++')"]
+	let l:lines += [""]
+	let l:lines += ["def build(bld):"]
+	let l:lines += ["	bld.load('g++')"]
+	let l:lines += [""]
+	let l:lines += ["	cxxflags=['-O0', '-gstabs+']"]
+	let l:lines += ["	src=['main.cpp']"]
+	let l:lines += [""]
+	let l:lines += ["	bld.program(target='main',"]
+	let l:lines += ["		source=src,"]
+	let l:lines += ["		cxxflags=cxxflags)"]
+	let l:lines += [""]
+	call append(".", l:lines)
+endfunction
+
 fu! InsertTestContent()
 	let l:fn = expand('%:t:r')
 	let l:lines = []
@@ -42,21 +66,6 @@ fu! InsertTestContent()
 	let l:lines += [""]
 	let l:lines += ["TEST(SuiteName, TestName) {"]
 	let l:lines += ["}"]
-	call append(".", l:lines)
-endfunction
-
-fu! InsertWScript()
-	let l:lines = []
-	let l:lines += ['def configure(conf):']
-	let l:lines += ['	conf.load("g++")']
-	let l:lines += ['']
-	let l:lines += ['def options(opts):']
-	let l:lines += ['	opts.load("g++")']
-	let l:lines += ['']
-	let l:lines += ['def build(bld):']
-	let l:lines += ['	bld.load("g++")']
-	let l:lines += ['	sources = ["file.cpp"]']
-	let l:lines += ['	bld.program(...)']
 	call append(".", l:lines)
 endfunction
 
