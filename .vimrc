@@ -203,7 +203,7 @@ augroup end
 " Powerline {{{
 set laststatus=2
 if has("win32")
-	set encoding=latin2
+	set encoding=cp1250
 else
 	set encoding=utf-8
 endif
