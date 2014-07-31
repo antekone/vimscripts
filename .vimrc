@@ -8,8 +8,9 @@ if has("win32")
 	set gfn=Fira_Mono:h10:cEASTEUROPE
 	set guicursor=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:block-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 else
-	set gfn=Inconsolata\ Medium\ 11
+	source ~/.vimfont
 endif
+
 set modelines=5
 set nobomb
 set endofline
@@ -42,7 +43,6 @@ set foldenable
 set foldmethod=marker
 set foldlevelstart=0
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
-
 set ttyfast
 set linespace=0
 set lazyredraw
@@ -166,6 +166,9 @@ command! Snippets e ~\.vim\bundle\ultisnips\ultisnips2\all.snippets
 command! SnippetsRuby e ~\.vim\bundle\ultisnips\ultisnips2\ruby.snippets
 command! SnippetsC e ~\.vim\bundle\ultisnips\ultisnips2\c.snippets
 " }}}
+" CSApprox {{{
+"set runtimepath^=~/.vim/bundle/CSApprox
+" }}}
 " Custom scripts {{{
 source ~/.vim/comment.vim
 source ~/.vim/guids.vim
@@ -204,6 +207,7 @@ if has("win32")
 else
 	set encoding=utf-8
 endif
+let g:Powerline_colorscheme = 'solarized256'
 " }}}
 " EasyGrep {{{
 set gp=grep\ -Hn

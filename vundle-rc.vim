@@ -1,6 +1,7 @@
 Bundle 'gmarik/vundle'
 Bundle 'surround.vim'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'zhaocai/linepower.vim'
 Bundle 'EasyGrep'
 Bundle 'honza/vim-snippets'
 Bundle 'octol/vim-cpp-enhanced-highlight'
