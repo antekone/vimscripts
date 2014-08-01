@@ -166,9 +166,6 @@ command! Snippets e ~\.vim\bundle\ultisnips\ultisnips2\all.snippets
 command! SnippetsRuby e ~\.vim\bundle\ultisnips\ultisnips2\ruby.snippets
 command! SnippetsC e ~\.vim\bundle\ultisnips\ultisnips2\c.snippets
 " }}}
-" CSApprox {{{
-"set runtimepath^=~/.vim/bundle/CSApprox
-" }}}
 " Custom scripts {{{
 source ~/.vim/comment.vim
 source ~/.vim/guids.vim
