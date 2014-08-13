@@ -214,6 +214,10 @@ set gp=grep\ -Hn
 " Remove trailing whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
 
+autocmd FileType mail set nonu          " Remove line numbering from mails (when composing mail from mutt).
+autocmd FileType mail set expandtab     " Don't use tabs in mail messages.
+autocmd FileType mail set spell spelllang=pl " Enable polish spellchecker.
+
 " Vundle {{{
 filetype off
 set rtp+=~/.vim/bundle/vundle/
