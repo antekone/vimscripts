@@ -5,7 +5,8 @@
 if has("win32")
 	"set gfn=Terminus:h9:cEASTEUROPE
 	"set gfn=Consolas:h11:cEASTEUROPE
-	set gfn=Liberation_Mono:h9:cEASTEUROPE
+	set gfn=Fira_Mono:h10:cEASTEUROPE
+	set guicursor=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:block-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 else
 	source ~/.vimfont
 endif
@@ -155,9 +156,6 @@ set runtimepath^=~/.vim/bundle/vim-cpp-enhanced-highlight
 " Gundo {{{
 set runtimepath^=~/.vim/bundle/Gundo
 " }}}
-" Vim-fugitive {{{
-set runtimepath^=~/.vim/bundle/vim-fugitive
-" }}}
 " UltiSnips {{{
 set runtimepath^=~/.vim/bundle/ultisnips
 set runtimepath^=~/.vim
@@ -167,9 +165,6 @@ let g:UltiSnipsSnippetDirectories=["ultisnips","ultisnips2"]
 command! Snippets e ~\.vim\bundle\ultisnips\ultisnips2\all.snippets
 command! SnippetsRuby e ~\.vim\bundle\ultisnips\ultisnips2\ruby.snippets
 command! SnippetsC e ~\.vim\bundle\ultisnips\ultisnips2\c.snippets
-" }}}
-" CSApprox {{{
-"set runtimepath^=~/.vim/bundle/CSApprox
 " }}}
 " Custom scripts {{{
 source ~/.vim/comment.vim
@@ -204,7 +199,11 @@ augroup end
 " }}}
 " Powerline {{{
 set laststatus=2
-set encoding=utf-8
+if has("win32")
+	set encoding=cp1250
+else
+	set encoding=utf-8
+endif
 let g:Powerline_colorscheme = 'solarized256'
 " }}}
 " EasyGrep {{{
