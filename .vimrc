@@ -91,7 +91,7 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 noremap H ^
-noremap L g_
+noremap L $
 " }}}
 " Leader key {{{
 let mapleader = "\\"
