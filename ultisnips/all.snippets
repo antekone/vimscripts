@@ -8,6 +8,10 @@ TEST($1, $2) {
 }
 endsnippet
 
+snippet tcase_add
+tcase_add_test(tc_$1, test_$2);
+endsnippet
+
 snippet TESTSM
 TEST(SegmentManager, $2) {
 	START_HEXEDIT_TEST(vis, inst, intf);
