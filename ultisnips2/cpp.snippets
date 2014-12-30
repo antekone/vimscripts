@@ -10,3 +10,23 @@ $1::~$1() {
 }
 endsnippet
 
+snippet getopt
+bool dummyOption = false;
+std::string dummyString;
+int c;
+while((c = getopt(argc, argv, "a:bh")) != -1) {
+	switch(c) {
+		case 'b':
+			dummyOption = true;
+			break;
+		case 'h':
+			syntax();
+			return 0;
+		case 'a':
+			dummyString = optarg;
+			break;
+		default:
+			return 1;
+	}
+}
+endsnippet
