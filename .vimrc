@@ -21,6 +21,7 @@ set tw=80
 set ts=4
 set sw=4
 set ai
+set et
 set go-=m " hide menu
 set go-=t " hide tearoffs
 set go-=T " hide toolbar
@@ -114,6 +115,11 @@ inoremap <leader>s <esc>:tabnext<cr>li
 nnoremap <leader>s :tabnext<cr>
 nnoremap <leader>q :q<cr>
 inoremap <leader>/ \
+
+" QtCreator's bindings
+nnoremap <leader>b :make<cr>
+nnoremap <leader>r :run<cr>
+nnoremap <leader>d :debug<cr>
 " }}}
 " Navigation, etc {{{
 nnoremap <A-Left> <C-t>
