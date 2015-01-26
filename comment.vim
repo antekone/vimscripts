@@ -6,7 +6,7 @@ fu! Comment()
 		let l:comm_char = "#"
 	elseif &filetype == "python"
 		let l:comm_char = "#"
-	elseif &filetype == "c" || &filetype == "c++" || &filetype == "cpp" || &filetype == "rust"
+	elseif &filetype == "c" || &filetype == "c++" || &filetype == "cpp" || &filetype == "rust" || &filetype == "arduino" || &filetype == "java"
 		let l:comm_char = "//"
 		let l:extended1 = 1
 	elseif &filetype == "vim"
@@ -16,6 +16,8 @@ fu! Comment()
 		let l:extended1 = 1
 	elseif &filetype == "cmake"
 		let l:comm_char = '#'
+	elseif &filetype == "clojure"
+		let l:comm_char = ';'
 	endif
 
 	let l:line = getline('.')
