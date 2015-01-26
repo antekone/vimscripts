@@ -114,6 +114,10 @@ inoremap <leader>s <esc>:tabnext<cr>li
 nnoremap <leader>s :tabnext<cr>
 nnoremap <leader>q :q<cr>
 inoremap <leader>/ \
+
+nnoremap <leader>b :make<cr>
+nnoremap <leader>r :run<cr>
+nnoremap <leader>d :debug<cr>
 " }}}
 " Navigation, etc {{{
 nnoremap <A-Left> <C-t>
@@ -219,7 +223,7 @@ autocmd FileType mail set spell spelllang=pl " Enable polish spellchecker.
 
 " Vundle {{{
 filetype off
-set rtp+=~/.vim/vundle/vundle/
+set rtp+=~/.vim/bundle/vundle
 call vundle#rc('~/.vim/vundle')
 source ~/.vim/vundle-rc.vim
 filetype plugin indent on
