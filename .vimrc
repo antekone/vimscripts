@@ -215,6 +215,20 @@ let g:Powerline_colorscheme = 'solarized256'
 " EasyGrep {{{
 set gp=grep\ -Hn
 " }}}
+" QuickFix fix ;)
+fu! QfScrollToEnd()
+    for i in tabpagebuflist()
+        if getbufvar(i, "&buftype") == "quickfix"
+            :copen
+            let l:lines = line("$") " get last line
+            call cursor(l:lines, 1) " move the cursor to last line
+            :wincmd p
+            break
+        endif
+    endfor
+endfunction
+
+au! QuickFixCmdPost make call QfScrollToEnd()
 
 " Remove trailing whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
