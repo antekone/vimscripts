@@ -21,6 +21,7 @@ set tw=80
 set ts=4
 set sw=4
 set ai
+set et
 set go-=m " hide menu
 set go-=t " hide tearoffs
 set go-=T " hide toolbar
@@ -115,6 +116,7 @@ nnoremap <leader>s :tabnext<cr>
 nnoremap <leader>q :q<cr>
 inoremap <leader>/ \
 
+" QtCreator's bindings
 nnoremap <leader>b :make<cr>
 nnoremap <leader>r :run<cr>
 nnoremap <leader>d :debug<cr>
@@ -213,6 +215,20 @@ let g:Powerline_colorscheme = 'solarized256'
 " EasyGrep {{{
 set gp=grep\ -Hn
 " }}}
+" QuickFix fix ;)
+fu! QfScrollToEnd()
+    for i in tabpagebuflist()
+        if getbufvar(i, "&buftype") == "quickfix"
+            :copen
+            let l:lines = line("$") " get last line
+            call cursor(l:lines, 1) " move the cursor to last line
+            :wincmd p
+            break
+        endif
+    endfor
+endfunction
+
+au! QuickFixCmdPost make call QfScrollToEnd()
 
 " Remove trailing whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
