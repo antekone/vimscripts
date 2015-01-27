@@ -116,6 +116,20 @@ nnoremap <leader>s :tabnext<cr>
 nnoremap <leader>q :q<cr>
 inoremap <leader>/ \
 
+fu! QfToggle()
+    for i in tabpagebuflist()
+        if getbufvar(i, "&buftype") == "quickfix"
+            cclose
+            return
+        endif
+    endfor
+
+    copen
+    wincmd p
+endfunction
+
+nnoremap <leader>e :call QfToggle()<cr>
+
 " QtCreator's bindings
 nnoremap <leader>b :make<cr>
 nnoremap <leader>r :run<cr>
@@ -219,14 +233,15 @@ set gp=grep\ -Hn
 fu! QfScrollToEnd()
     for i in tabpagebuflist()
         if getbufvar(i, "&buftype") == "quickfix"
-            :copen
+            copen
             let l:lines = line("$") " get last line
             call cursor(l:lines, 1) " move the cursor to last line
-            :wincmd p
+            wincmd p
             break
         endif
     endfor
 endfunction
+
 
 au! QuickFixCmdPost make call QfScrollToEnd()
 
