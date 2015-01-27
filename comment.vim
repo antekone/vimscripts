@@ -14,6 +14,9 @@ fu! Comment()
 	elseif &filetype == "javascript" || &filetype == "html"
 		let l:comm_char = "//"
 		let l:extended1 = 1
+	elseif &filetype == "haskell"
+		let l:comm_char = "--"
+		let l:extended1 = 1
 	elseif &filetype == "cmake"
 		let l:comm_char = '#'
 	elseif &filetype == "clojure"
