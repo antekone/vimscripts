@@ -122,6 +122,20 @@ nnoremap <leader>s :tabnext<cr>
 nnoremap <leader>q :q<cr>
 inoremap <leader>/ \
 
+fu! QfToggle()
+    for i in tabpagebuflist()
+        if getbufvar(i, "&buftype") == "quickfix"
+            cclose
+            return
+        endif
+    endfor
+
+    copen
+    wincmd p
+endfunction
+
+nnoremap <leader>e :call QfToggle()<cr>
+
 " QtCreator's bindings
 nnoremap <leader>b :make<cr>
 nnoremap <leader>r :run<cr>
@@ -230,6 +244,7 @@ fu! QfScrollToEnd()
         endif
     endfor
 endfunction
+
 
 au! QuickFixCmdPost make call QfScrollToEnd()
 
