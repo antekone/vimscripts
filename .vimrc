@@ -3,9 +3,9 @@
 
 " Preamble {{{
 if has("win32")
-	"set gfn=Terminus:h9:cEASTEUROPE
+	set gfn=Terminus:h9:cEASTEUROPE
 	"set gfn=Consolas:h11:cEASTEUROPE
-	set gfn=Fira_Mono:h10:cEASTEUROPE
+    "set gfn=Fira_Mono:h10:cEASTEUROPE
 	set guicursor=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:block-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 else
 	source ~/.vimfont
@@ -30,7 +30,13 @@ set go+=c " don't use GUI dialogs
 set go-=e " don't show graphical tabs
 set ruler
 set lazyredraw
-colors slate
+
+if has("win32")
+    colors torte
+else
+    colors slate
+endif
+
 " fix slate's CursorLine background color
 set hlsearch
 set mouse=
@@ -55,7 +61,7 @@ syntax on
 "set list " Display unprintable characters?
 " }}}
 " Makeprg configuration {{{
-map <F9> :make<CR><CR>
+map <F9> :make!<CR><CR>
 if has("win32")
 	set makeprg=gmake
 endif
@@ -205,11 +211,7 @@ augroup end
 " }}}
 " Powerline {{{
 set laststatus=2
-if has("win32")
-	set encoding=cp1250
-else
-	set encoding=utf-8
-endif
+set encoding=utf-8
 let g:Powerline_colorscheme = 'solarized256'
 " }}}
 " EasyGrep {{{
@@ -219,10 +221,11 @@ set gp=grep\ -Hn
 fu! QfScrollToEnd()
     for i in tabpagebuflist()
         if getbufvar(i, "&buftype") == "quickfix"
-            :copen
+            copen
             let l:lines = line("$") " get last line
             call cursor(l:lines, 1) " move the cursor to last line
-            :wincmd p
+            wincmd p
+            redraw
             break
         endif
     endfor
