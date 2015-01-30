@@ -121,6 +121,8 @@ inoremap <leader>s <esc>:tabnext<cr>li
 nnoremap <leader>s :tabnext<cr>
 nnoremap <leader>q :q<cr>
 inoremap <leader>/ \
+nnoremap <leader>` :A!<cr>
+nnoremap <leader>F :FindCursor<cr>
 
 fu! QfToggle()
     for i in tabpagebuflist()
@@ -198,14 +200,10 @@ source ~/.vim/guids.vim
 source ~/.vim/moc.vim
 source ~/.vim/bundle/a.vim
 source ~/.vim/find.vim
-nnoremap <leader>` :A!<cr>
 
-command! CPP vimgrep <cword> **/*.cpp
-command! H vimgrep <cword> **/*.h
-command! CPPH  vimgrep <cword> **/*.cpp **/*.h
-command! RB vimgrep <cword> **/*.rb
-command! PY vimgrep <cword> **/*.py
-command! -nargs=+ FindAll vimgrep <args> **/*.cpp **/*.h
+" Defines the `FindAll` command, that accepts multiple arguments.
+command! -nargs=+ FindAll vimgrep <args>                      **/*.cpp **/*.c **/*.m **/*.h
+command! FindCursor execute "vimgrep /".expand("<cword>")."/j **/*.cpp **/*.c **/*.h **/*.h"
 
 " }}}
 " Cursorline {{{
