@@ -203,7 +203,7 @@ source ~/.vim/find.vim
 
 " Defines the `FindAll` command, that accepts multiple arguments.
 command! -nargs=+ FindAll vimgrep <args>                      **/*.cpp **/*.c **/*.m **/*.h
-command! FindCursor execute "vimgrep /".expand("<cword>")."/j **/*.cpp **/*.c **/*.h **/*.h"
+command! FindCursor execute "vimgrep /".expand("<cword>")."/j **/*.cpp **/*.c **/*.m **/*.h"
 
 " }}}
 " Cursorline {{{
