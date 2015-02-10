@@ -3,12 +3,13 @@
 
 " Preamble {{{
 if has("win32")
-	set gfn=Terminus:h9:cEASTEUROPE
-	"set gfn=Consolas:h11:cEASTEUROPE
+    "set gfn=Terminus:h9:cEASTEUROPE
+    "set gfn=Consolas:h11:cEASTEUROPE
     "set gfn=Fira_Mono:h10:cEASTEUROPE
-	set guicursor=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:block-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+    set gfn=PragmataPro:h9:cEASTEUROPE
+    set guicursor=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:block-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 else
-	source ~/.vimfont
+    source ~/.vimfont
 endif
 
 set modelines=5
@@ -63,7 +64,7 @@ syntax on
 " Makeprg configuration {{{
 map <F9> :make!<CR><CR>
 if has("win32")
-	set makeprg=gmake
+    set makeprg=gmake
 endif
 " }}}
 " Cursor stuff {{{
@@ -174,8 +175,8 @@ cnoremap <C-v> <C-r>+
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.o,*.ilk,*.pdb,*.dll,*.so,*/tmp/*
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn|bzr)$',
-	\ 'file': '\v\.(exe|so|dll|gch)$',
+    \ 'dir':  '\v[\/]\.(git|hg|svn|bzr)$',
+    \ 'file': '\v\.(exe|so|dll|gch)$',
 \ }
 " }}}
 " Vim-C++ Enhanced Highlight {{{
@@ -208,17 +209,17 @@ command! FindCursor execute "vimgrep /".expand("<cword>")."/j **/*.cpp **/*.c **
 " }}}
 " Cursorline {{{
 augroup cursorline
-	autocmd!
+    autocmd!
 
-	"au WinLeave,InsertEnter * set nocursorline
-	" Cursorline jest wyłączony, bo nie wygląda zbyt
-	" dobrze w konsoli.
-	"au WinEnter,InsertLeave * set cursorline
+    "au WinLeave,InsertEnter * set nocursorline
+    " Cursorline jest wyłączony, bo nie wygląda zbyt
+    " dobrze w konsoli.
+    "au WinEnter,InsertLeave * set cursorline
 
-	"au WinLeave,InsertEnter * set nocursorcolumn
-	"au WinEnter,InsertLeave * set cursorcolumn
+    "au WinLeave,InsertEnter * set nocursorcolumn
+    "au WinEnter,InsertLeave * set cursorcolumn
 
-	hi CursorLine guibg=#202020
+    hi CursorLine guibg=#202020
 augroup end
 " }}}
 " Powerline {{{
@@ -243,8 +244,36 @@ fu! QfScrollToEnd()
     endfor
 endfunction
 
+" The function above is actually is disabled for now.
+"au! QuickFixCmdPost make call QfScrollToEnd()
 
-au! QuickFixCmdPost make call QfScrollToEnd()
+" Toggle tab visibility. This should make interoperability with TabNazis(tm)
+" a little better.
+fu! ToggleTabVisibility()
+    if exists("b:TTVMode") && b:TTVMode == 1
+        let b:TTVMode = 0
+        set nolist
+        match
+        echo "TabVisibility mode off"
+    else
+        let b:TTVMode = 1
+        set list
+
+        " tab:xy, eol:c
+        set listchars=tab:>-,eol:$
+
+        " Match with no arguments will clear all matches.
+        match
+
+        " Use this regexp to match ExtraWhitespaces.
+        " From some reason this doesn't work, so it's disabled.
+        " match ExtraWhitespace /^[\t]*[ ]\+/ " Make sure there are no spaces
+        echo "TabVisibility mode on"
+    endif
+endfunction
+
+" Define ExtraWhitespace color: terminal=red, gui=red.
+nnoremap <leader>T :call ToggleTabVisibility()<cr>
 
 " Remove trailing whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
@@ -253,6 +282,9 @@ autocmd FileType mail set nonu          " Remove line numbering from mails (when
 autocmd FileType mail set expandtab     " Don't use tabs in mail messages.
 autocmd FileType mail set spell spelllang=pl " Enable polish spellchecker.
 
+" Colors (grb256)
+source ~/.vim/colors/grb256.vim
+
 " Vundle {{{
 filetype off
 set rtp+=~/.vim/bundle/vundle
@@ -260,3 +292,4 @@ call vundle#rc('~/.vim/vundle')
 source ~/.vim/vundle-rc.vim
 filetype plugin indent on
 " }}}
+
