@@ -287,7 +287,7 @@ source ~/.vim/colors/grb256.vim
 
 " Vundle {{{
 filetype off
-set rtp+=~/.vim/bundle/vundle
+set rtp+=~/.vim/vundle/vundle
 call vundle#rc('~/.vim/vundle')
 source ~/.vim/vundle-rc.vim
 filetype plugin indent on
