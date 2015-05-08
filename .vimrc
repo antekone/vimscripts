@@ -199,7 +199,6 @@ command! SnippetsC e ~\.vim\bundle\ultisnips\ultisnips2\c.snippets
 source ~/.vim/comment.vim
 source ~/.vim/guids.vim
 source ~/.vim/moc.vim
-source ~/.vim/bundle/a.vim
 source ~/.vim/find.vim
 
 " Defines the `FindAll` command, that accepts multiple arguments.
@@ -287,9 +286,10 @@ source ~/.vim/colors/grb256.vim
 
 " Vundle {{{
 filetype off
-set rtp+=~/.vim/vundle/vundle
-call vundle#rc('~/.vim/vundle')
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 source ~/.vim/vundle-rc.vim
+call vundle#end()
 filetype plugin indent on
 " }}}
 

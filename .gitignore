@@ -1,3 +1,6 @@
 vundle/*
 .netrwhist
 *.swp
+spell
+bundle/*
+
