@@ -159,6 +159,7 @@ vnoremap <C-y> "+y
 " }}}
 " ESC {{{
 inoremap jk <esc>
+inoremap JK <esc>:w<cr>
 inoremap <F10> <esc>
 inoremap <esc> <nop>
 inoremap <C-o> <esc>O
