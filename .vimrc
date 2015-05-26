@@ -64,6 +64,8 @@ syntax on
 " Makeprg configuration {{{
 map <F9> :make!<CR><CR>
 if has("win32")
+    set makeprg=make.bat
+else
     set makeprg=./make.sh
 endif
 " }}}
