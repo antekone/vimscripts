@@ -64,7 +64,7 @@ syntax on
 " Makeprg configuration {{{
 map <F9> :make!<CR><CR>
 if has("win32")
-    set makeprg=gmake
+    set makeprg=./make.sh
 endif
 " }}}
 " Cursor stuff {{{
