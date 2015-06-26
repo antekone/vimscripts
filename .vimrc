@@ -66,7 +66,9 @@ syntax on
 " Makeprg configuration {{{
 map <F9> :make!<CR><CR>
 if has("win32")
-    set makeprg=gmake
+    set makeprg=make.bat
+else
+    set makeprg=./make.sh
 endif
 " }}}
 " Cursor stuff {{{
@@ -292,6 +294,9 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 source ~/.vim/vundle-rc.vim
+if filereadable("~/.vim/vundle-local.vim")
+    source ~/.vim/vundle-local.vim
+endif
 call vundle#end()
 filetype plugin indent on
 " }}}
