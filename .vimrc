@@ -31,6 +31,8 @@ set go+=c " don't use GUI dialogs
 set go-=e " don't show graphical tabs
 set ruler
 set lazyredraw
+set backupdir=~/.vim/swaps
+set directory=~/.vim/swaps
 
 if has("win32")
     colors torte
@@ -293,4 +295,3 @@ source ~/.vim/vundle-rc.vim
 call vundle#end()
 filetype plugin indent on
 " }}}
-
