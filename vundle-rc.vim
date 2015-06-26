@@ -1,7 +1,6 @@
 Plugin 'gmarik/Vundle.vim'
 Plugin 'surround.vim'
 Plugin 'Lokaltog/vim-powerline'
-Plugin 'zhaocai/linepower.vim'
 Plugin 'EasyGrep'
 Plugin 'honza/vim-snippets'
 Plugin 'octol/vim-cpp-enhanced-highlight'
