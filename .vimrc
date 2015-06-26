@@ -292,6 +292,9 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 source ~/.vim/vundle-rc.vim
+if filereadable("~/.vim/vundle-local.vim")
+    source ~/.vim/vundle-local.vim
+endif
 call vundle#end()
 filetype plugin indent on
 " }}}
