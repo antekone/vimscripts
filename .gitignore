@@ -3,4 +3,4 @@ vundle/*
 *.swp
 spell
 bundle/*
-
+vundle-local.vim
