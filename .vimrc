@@ -31,6 +31,8 @@ set go+=c " don't use GUI dialogs
 set go-=e " don't show graphical tabs
 set ruler
 set lazyredraw
+set backupdir=~/.vim/swaps
+set directory=~/.vim/swaps
 
 if has("win32")
     colors torte
@@ -292,7 +294,9 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 source ~/.vim/vundle-rc.vim
+if filereadable("~/.vim/vundle-local.vim")
+    source ~/.vim/vundle-local.vim
+endif
 call vundle#end()
 filetype plugin indent on
 " }}}
-
