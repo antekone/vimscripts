@@ -11,7 +11,7 @@ fu! Comment()
 		let l:extended1 = 1
 	elseif &filetype == "vim"
 		let l:comm_char = "\""
-	elseif &filetype == "javascript" || &filetype == "html"
+	elseif &filetype == "javascript" || &filetype == "html" || &filetype == "scss"
 		let l:comm_char = "//"
 		let l:extended1 = 1
 	elseif &filetype == "haskell"
