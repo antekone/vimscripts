@@ -74,6 +74,7 @@ fu! InsertDialogClass()
     let l:lines = []
     let l:lines += ["#include <QDialog>"]
     let l:lines += ["#include \"state/StatePersistenceAware.h\""]
+    let l:lines += ["#include \"errors/Error.h\""]
     let l:lines += ["#include \"ui_". l:fn .".h\""]
     let l:lines += [""]
     let l:lines += ["BEGIN_ERROR_DEFS_NS(". l:fn ."Error)"]
@@ -96,7 +97,6 @@ fu! InsertDialogClass()
     let l:lines += ["    virtual ~". l:fn ."();"]
     let l:lines += [""]
     let l:lines += ["    void done(int r);"]
-    let l:lines += [""]
     let l:lines += ["};"]
     let l:lines += [""]
     call append(".", l:lines)
@@ -162,6 +162,8 @@ fu! InsertDialogImplClass()
     let l:lines += [""]
     let l:lines += ["    QDialog::done(r); // closes the dialog"]
     let l:lines += ["}"]
+    let l:lines += [""]
+    let l:lines += ["// Insert MOC tag here"]
     call append(".", l:lines)
 endfunction
 
