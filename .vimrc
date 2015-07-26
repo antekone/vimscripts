@@ -10,6 +10,7 @@ if has("win32")
     set guicursor=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:block-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 else
     source ~/.vimfont
+    set guicursor=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:block-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 endif
 
 set modelines=5
@@ -29,6 +30,8 @@ set go-=T " hide toolbar
 set go-=a
 set go+=c " don't use GUI dialogs
 set go-=e " don't show graphical tabs
+set go-=r " remove right scrollbar in gvim
+set go-=L " remove left scrollbar in gvim
 set ruler
 set lazyredraw
 set backupdir=~/.vim/swaps
@@ -285,6 +288,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType mail set nonu          " Remove line numbering from mails (when composing mail from mutt).
 autocmd FileType mail set expandtab     " Don't use tabs in mail messages.
 autocmd FileType mail set spell spelllang=pl " Enable polish spellchecker.
+
+autocmd FileType ruby set ts=2 sw=2 tw=0 et
 
 " Colors (grb256)
 source ~/.vim/colors/grb256.vim
