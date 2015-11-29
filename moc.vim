@@ -2,7 +2,7 @@ fu! FindWScriptDir()
     let l:path_tokens = split(expand('%:p'), '/')
     for ltry in range(len(l:path_tokens) - 2, 0, -1)
         let l:tmp_path = '/'.join(l:path_tokens[0:ltry], '/')
-        if filereadable(join([l:tmp_path, 'wscript'], '/'))
+        if filereadable(join([l:tmp_path, 'wscript'], '/')) || filereadable(join([l:tmp_path, 'CMakeLists.txt'], '/'))
             return l:tmp_path
         endif
     endfor
