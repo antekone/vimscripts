@@ -237,6 +237,9 @@ let g:Powerline_colorscheme = 'solarized256'
 " EasyGrep {{{
 set gp=grep\ -Hn
 " }}}
+" GNU Global {{{
+nnoremap <leader>g :GtagsCursor<CR>
+" }}}
 " QuickFix fix ;)
 fu! QfScrollToEnd()
     for i in tabpagebuflist()
