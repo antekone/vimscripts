@@ -19,7 +19,7 @@ set endofline
 set nu
 set nocompatible
 set backspace=indent,eol,start
-set tw=80
+set tw=0
 set ts=4
 set sw=4
 set ai
