@@ -308,3 +308,6 @@ endif
 call vundle#end()
 filetype plugin indent on
 " }}}
+
+" Ag -> RipGrep
+let g:ag_prg="/home/antoniak/dev/rust/ripgrep/target/release/rg.exe --vimgrep"
