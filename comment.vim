@@ -17,7 +17,7 @@ fu! Comment()
 	elseif &filetype == "haskell"
 		let l:comm_char = "--"
 		let l:extended1 = 1
-	elseif &filetype == "cmake" || &filetype == "sh" || &filetype == "bash"
+	elseif &filetype == "cmake" || &filetype == "sh" || &filetype == "bash" || &filetype == "yaml"
 		let l:comm_char = '#'
 	elseif &filetype == "clojure"
 		let l:comm_char = ';'
