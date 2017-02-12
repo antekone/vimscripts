@@ -68,6 +68,7 @@ syntax on
 " }}}
 " Makeprg configuration {{{
 map <F9> :make!<CR><CR>
+map <F8> :Lint<CR>
 if has("win32")
     set makeprg=make.bat
 else
@@ -150,6 +151,7 @@ nnoremap <leader>e :call QfToggle()<cr>
 nnoremap <leader>b :make<cr>
 nnoremap <leader>r :run<cr>
 nnoremap <leader>d :debug<cr>
+nnoremap <leader>l :Lint<cr>
 " }}}
 " Navigation, etc {{{
 nnoremap <A-Left> <C-t>
@@ -281,6 +283,11 @@ fu! ToggleTabVisibility()
         echo "TabVisibility mode on"
     endif
 endfunction
+
+fu! RunLint()
+    :cexpr system('./lint.sh')
+endfunction
+command! Lint :call RunLint()
 
 " Define ExtraWhitespace color: terminal=red, gui=red.
 nnoremap <leader>T :call ToggleTabVisibility()<cr>
