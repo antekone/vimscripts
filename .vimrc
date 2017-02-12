@@ -288,11 +288,14 @@ nnoremap <leader>T :call ToggleTabVisibility()<cr>
 " Remove trailing whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
 
-autocmd FileType mail set nonu          " Remove line numbering from mails (when composing mail from mutt).
-autocmd FileType mail set expandtab     " Don't use tabs in mail messages.
+autocmd FileType mail set nonu               " Remove line numbering from mails (when composing mail from mutt).
+autocmd FileType mail set expandtab          " Don't use tabs in mail messages.
 autocmd FileType mail set spell spelllang=pl " Enable polish spellchecker.
 
 autocmd FileType ruby set ts=2 sw=2 tw=0 et
+
+autocmd FileType rust compiler cargo
+autocmd FileType rust nnoremap <F9> :make build<CR>
 
 " Colors (grb256)
 source ~/.vim/colors/grb256.vim
