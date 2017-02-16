@@ -188,6 +188,7 @@ let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|bzr)$',
     \ 'file': '\v\.(exe|so|dll|gch)$',
 \ }
+let g:ctrlp_max_files=0
 " }}}
 " Vim-C++ Enhanced Highlight {{{
 set runtimepath^=~/.vim/bundle/vim-cpp-enhanced-highlight
