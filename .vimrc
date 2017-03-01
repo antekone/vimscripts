@@ -47,7 +47,7 @@ endif
 set hlsearch
 set mouse=
 set mousehide
-set switchbuf=useopen,usetab
+set switchbuf=useopen,usetab,newtab
 set complete=.,w,b,t
 set pumheight=15
 set showfulltag
