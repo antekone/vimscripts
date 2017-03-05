@@ -1,0 +1,3 @@
+" Ag -> RipGrep:  let g:ag_prg="/home/antoniak/dev/rust/ripgrep/target/release/rg.exe --vimgrep"
+
+" vim:set ft=vim:

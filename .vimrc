@@ -9,7 +9,6 @@ if has("win32")
     set gfn=PragmataPro:h9:cEASTEUROPE
     set guicursor=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:block-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 else
-    source ~/.vimfont
     set guicursor=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:block-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 endif
 
@@ -131,7 +130,7 @@ nnoremap <leader>s :tabnext<cr>
 nnoremap <leader>q :q<cr>
 inoremap <leader>/ \
 nnoremap <leader>` :A!<cr>
-nnoremap <leader>F :FindCursor<cr>
+nnoremap <leader>F :Ag<cr>
 
 fu! QfToggle()
     for i in tabpagebuflist()
@@ -141,8 +140,12 @@ fu! QfToggle()
         endif
     endfor
 
-    copen
-    wincmd p
+    " Force open quickfix, occupy whole bottom area instead
+    " of bot-right area.
+    botright copen
+
+    " Select previous window (wincmd = Ctrl+W).
+    "wincmd p
 endfunction
 
 nnoremap <leader>e :call QfToggle()<cr>
@@ -213,8 +216,13 @@ source ~/.vim/moc.vim
 source ~/.vim/find.vim
 
 " Defines the `FindAll` command, that accepts multiple arguments.
-command! -nargs=+ FindAll vimgrep <args>                      **/*.cpp **/*.c **/*.m **/*.h
-command! FindCursor execute "vimgrep /".expand("<cword>")."/j **/*.cpp **/*.c **/*.m **/*.h"
+"
+" I've deprecated these commands in favor of the Ag plugin/command.
+" Ag will spawn ack/ag/rg tool that is an order of magnitude faster than
+" vimgrep.
+"
+" command! -nargs=+ FindAll vimgrep <args>                      **/*.cpp **/*.c **/*.m **/*.h
+" command! FindCursor execute "vimgrep /".expand("<cword>")."/j **/*.cpp **/*.c **/*.m **/*.h"
 
 " }}}
 " Cursorline {{{
@@ -320,5 +328,15 @@ call vundle#end()
 filetype plugin indent on
 " }}}
 
-" Ag -> RipGrep
-let g:ag_prg="/home/antoniak/dev/rust/ripgrep/target/release/rg.exe --vimgrep"
+" Include local settings.
+"
+" Examples of what could be set in there:
+"
+" Ag -> RipGrep:  let g:ag_prg="/home/antoniak/dev/rust/ripgrep/target/release/rg.exe --vimgrep"
+
+let vimlocalpath = expand("$HOME/.vim/.vimlocal")
+if filereadable(vimlocalpath)
+    exec "source " . vimlocalpath
+else
+    echo vimlocalpath . " file not found."
+endif
