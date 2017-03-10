@@ -340,3 +340,6 @@ if filereadable(vimlocalpath)
 else
     echo vimlocalpath . " file not found."
 endif
+
+source $HOME/.vim/ctrlp.vim
+
