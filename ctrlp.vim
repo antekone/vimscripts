@@ -10,8 +10,8 @@
 
 fu! CtrlPRefreshCacheFile()
     if filereadable(".ctrlp-cache")
-        let g:ctrlp_user_command = '/usr/bin/cat %s/.ctrlp-cache'
-        "let g:ctrlp_user_command = 'find %s -type f'
+        "let g:ctrlp_user_command = '/usr/bin/cat %s/.ctrlp-cache'
+        let g:ctrlp_user_command = 'find %s -type f | grep -v \.git'
     endif
 endfunction
 
