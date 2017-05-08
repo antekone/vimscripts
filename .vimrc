@@ -173,10 +173,8 @@ vnoremap <C-y> "+y
 inoremap jk <esc>
 inoremap JK <esc>:w<cr>
 inoremap <F10> <esc>
-inoremap <esc> <nop>
 inoremap <C-o> <esc>O
 vnoremap <return> <esc>
-vnoremap <esc> <nop>
 " }}}
 " Ctrl+V paste {{{
 " Insert yanked text to the command line buffer by Shift+Insert
