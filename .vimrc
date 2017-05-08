@@ -338,6 +338,8 @@ filetype plugin indent on
 "
 " Ag -> RipGrep:  let g:ag_prg="/home/antoniak/dev/rust/ripgrep/target/release/rg.exe --vimgrep"
 
+source $HOME/.vim/ctrlp.vim
+
 let vimlocalpath = expand("$HOME/.vim/.vimlocal")
 if filereadable(vimlocalpath)
     exec "source " . vimlocalpath
@@ -345,5 +347,4 @@ else
     echo vimlocalpath . " file not found."
 endif
 
-source $HOME/.vim/ctrlp.vim
 
