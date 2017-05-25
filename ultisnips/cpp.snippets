@@ -1,0 +1,144 @@
+# Control-J -> next field
+
+snippet uiactionh
+#pragma once
+
+#include "UIAction.h"
+
+class ${1:CLASSNAME}UIAction: public UIAction {
+public:
+    void init() override;
+    void invoke() override;
+private:
+};
+endsnippet
+
+snippet uiactioncpp
+#include "${1:CLASSNAME}UIAction.h"
+
+void $1UIAction::init() {
+    setActionText("&Title...");
+    // setActionShortcut
+    // setActionIcon
+    // setActionToolTip
+}
+
+void $1UIAction::invoke() {
+    // hostApp
+}
+endsnippet
+
+
+snippet sharedptr
+class ${1:CLASSNAME};
+typedef std::shared_ptr<$1> $1Ref;
+endsnippet
+
+
+snippet class
+class ${1:CLASSNAME} {
+public:
+	$1();
+	virtual ~$1();
+private:
+};
+endsnippet
+
+
+snippet createref
+static ${1:ClassName}Ref createRef() {
+	auto obj = std::make_shared<$1>();
+	return obj;
+}
+endsnippet
+
+
+snippet ctor
+${1:classname}::$1() {
+}
+endsnippet
+
+
+snippet eventcpp
+void ${1:classname}::load(EVOutput* device) { }
+void $1::record(EVOutput* device) { }
+void $1::play(EVInput* app) {
+	// app->moveCaretCtrlEnd();
+    app->moveCaretCtrlEnd();
+}
+
+endsnippet
+
+
+snippet namespace
+#define NAMESPACE_`!p snip.rv = t[1].upper()`_BEGIN   namespace ${1:TrueName} {
+#define NAMESPACE_`!p snip.rv = t[1].upper()`_END     }
+
+NAMESPACE_`!p snip.rv = t[1].upper()`_BEGIN
+
+$0
+
+NAMESPACE_`!p snip.rv = t[1].upper()`_END
+endsnippet
+
+snippet wow
+${1:Text}`!p snip.rv = (75-2*len(t[1]))*' '+t[1].upper()`
+endsnippet
+
+
+snippet tryweaver
+try {
+	EVInput* weaver = InterfaceCast::getWeaverInterface(hostApp->getCurrentVisualizerIntf());
+	$0
+} catch(std::runtime_error& e) {
+}
+endsnippet
+
+snippet qs
+#include <string/QStringUtils.h>
+using QStringUtils::qs;
+endsnippet
+
+snippet func2
+void ${1:classname}::${2:funcname}() {
+}
+
+void $1::$3() {
+}
+endsnippet
+
+snippet func3
+void ${1:classname}::${2:funcname}() {
+}
+
+void $1::$3() {
+}
+
+void $1::$4() {
+}
+endsnippet
+
+snippet func4
+void ${1:classname}::${2:funcname}() {
+}
+
+void $1::$3() {
+}
+
+void $1::$4() {
+}
+
+void $1::$5() {
+}
+endsnippet
+
+
+snippet castfromabstract
+inline static ${1:classprefix}UIActionRef castFromAbstract(UIActionRef abstract);
+
+// move this outside the class
+
+$1UIActionRef $1UIAction::castFromAbstract(UIActionRef abstract) {
+    return std::dynamic_pointer_cast<$1UIAction>(abstract);
+}
+endsnippet

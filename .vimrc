@@ -173,10 +173,8 @@ vnoremap <C-y> "+y
 inoremap jk <esc>
 inoremap JK <esc>:w<cr>
 inoremap <F10> <esc>
-inoremap <esc> <nop>
 inoremap <C-o> <esc>O
 vnoremap <return> <esc>
-vnoremap <esc> <nop>
 " }}}
 " Ctrl+V paste {{{
 " Insert yanked text to the command line buffer by Shift+Insert
@@ -316,6 +314,12 @@ autocmd FileType rust set makeprg=./make.sh
 " Colors (grb256)
 source ~/.vim/colors/grb256.vim
 
+" Rust racer
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
 " Vundle {{{
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -334,9 +338,13 @@ filetype plugin indent on
 "
 " Ag -> RipGrep:  let g:ag_prg="/home/antoniak/dev/rust/ripgrep/target/release/rg.exe --vimgrep"
 
+source $HOME/.vim/ctrlp.vim
+
 let vimlocalpath = expand("$HOME/.vim/.vimlocal")
 if filereadable(vimlocalpath)
     exec "source " . vimlocalpath
 else
     echo vimlocalpath . " file not found."
 endif
+
+
