@@ -309,7 +309,9 @@ autocmd FileType mail set spell spelllang=pl " Enable polish spellchecker.
 autocmd FileType ruby set ts=2 sw=2 tw=0 et
 
 autocmd FileType rust compiler cargo
-autocmd FileType rust set makeprg=./make.sh
+
+autocmd FileType rust  set makeprg=./make.sh
+autocmd FileType scala set makeprg=./make.sh
 
 " Colors (grb256)
 source ~/.vim/colors/grb256.vim
