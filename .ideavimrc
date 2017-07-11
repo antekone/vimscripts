@@ -1,0 +1,18 @@
+set surround
+
+nnoremap H ^
+nnoremap L $
+inoremap jk <esc>
+inoremap JK <esc>:w<cr>
+inoremap <C-O> <esc>ko
+
+nnoremap \a :action PreviousTab<cr>
+nnoremap \s :action NextTab<cr>
+nnoremap \q :action CloseActiveTab<cr>
+nnoremap \b :action CompileDirty<cr>
+nnoremap \B :action CompileProject<cr>
+
+nnoremap \] :action GotoNextError<cr>
+nnoremap \[ :action GotoPreviousError<cr>
+
+vnoremap \c :action CommentByLineComment<cr>
