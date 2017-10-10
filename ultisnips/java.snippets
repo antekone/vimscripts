@@ -1,0 +1,20 @@
+snippet sql
+public Optional<$1> $2() {
+    try {
+        PreparedStatement ps = conn.prepareStatement("select...");
+        try {
+            ResultSet rs = ps.executeQuery();
+			// while(rs.next()) {
+			// 	 arr.add(rs.getLong(1));
+			// }
+            return Optional.of(xxx);
+        } finally {
+			ps.close();
+        }
+    } catch(SQLException e) {
+        Log.put("SQLException: %s", e.toString());
+    }
+
+    return Optional.empty();
+}
+endsnippet
