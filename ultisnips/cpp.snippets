@@ -142,3 +142,25 @@ $1UIActionRef $1UIAction::castFromAbstract(UIActionRef abstract) {
     return std::dynamic_pointer_cast<$1UIAction>(abstract);
 }
 endsnippet
+
+snippet typedtests
+#include <gtest/gtest.h>
+
+template <typename T>
+class Test$1: public ::testing::Test {
+
+};
+
+TYPED_TEST_CASE_P(Test$1);
+
+TYPED_TEST_P(Test$1, A) {
+
+}
+
+REGISTER_TYPED_TEST_CASE_P(Test$1,
+    A
+);
+
+typedef ::testing::Types<Type1, Type2, ...> Types$1;
+INSTANTIATE_TYPED_TEST_CASE_P(TestTypes$1, Test$1, Types$1);
+endsnippet
