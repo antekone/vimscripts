@@ -148,7 +148,14 @@ snippet typedtests
 
 template <typename T>
 class Test$1: public ::testing::Test {
+public:
+	void SetUp() {
+	}
 
+	void TearDown() {
+	}
+protected:
+	// ...
 };
 
 TYPED_TEST_CASE_P(Test$1);
