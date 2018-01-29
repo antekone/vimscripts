@@ -1,0 +1,6 @@
+inoremap jk <esc>
+inoremap JK <esc>:w<CR>
+nnoremap \a :tabprev<cr>
+nnoremap \s :tabnext<cr>
+nnoremap H ^
+nnoremap L $
