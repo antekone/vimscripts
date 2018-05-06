@@ -130,6 +130,8 @@ nnoremap <leader>s :tabnext<cr>
 nnoremap <leader>q :q<cr>
 inoremap <leader>/ \
 nnoremap <leader>` :A!<cr>
+nnoremap <leader>n :NERDTreeFind<cr>
+nnoremap <leader>N :NERDTreeToggle<cr>
 nnoremap <leader>F :Ag<cr>
 
 fu! QfToggle()
@@ -249,6 +251,28 @@ set gp=grep\ -Hn
 " GNU Global {{{
 nnoremap <leader>g :GtagsCursor<CR>
 " }}}
+" NERD Tree {{{
+" }}}
+" vim-lsc {{{
+let g:lsc_server_commands = {
+    \ 'sh': '/usr/bin/bash-language-server start',
+    \ 'python': '/usr/bin/pyls'
+\ }
+
+let g:lsc_auto_map = {
+    \ 'GoToDefinition': '<C-]>',
+    \ 'FindReferences': 'gr',
+    \ 'FindImplementations': 'gI',
+    \ 'FindCodeActions': 'ga',
+    \ 'DocumentSymbol': 'go',
+    \ 'WorkspaceSymbol': 'gS',
+    \ 'ShowHover': 'K',
+    \ 'Completion': 'completefunc',
+    \}
+"    \ 'PreviousReference': '<C-p>',
+"    \ 'NextReference': '<C-n>',
+" }}}
+
 " QuickFix fix ;)
 fu! QfScrollToEnd()
     for i in tabpagebuflist()

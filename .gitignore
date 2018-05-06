@@ -4,3 +4,4 @@ vundle/*
 spell
 bundle/*
 vundle-local.vim
+swaps/*

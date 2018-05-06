@@ -46,8 +46,9 @@ endsnippet
 
 
 snippet createref
-static ${1:ClassName}Ref createRef() {
-	auto obj = std::make_shared<$1>();
+template <typename... Args>
+static ${1:ClassName}Ref createRef(Args&&... args) {
+	auto obj = std::make_shared<$1>(std::forward<Args>(args)...);
 	return obj;
 }
 endsnippet
