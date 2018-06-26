@@ -1,4 +1,4 @@
 " Ag -> RipGrep:  let g:ag_prg="/home/antoniak/dev/rust/ripgrep/target/release/rg.exe --vimgrep"
 
 " vim:set ft=vim:
-let g:ctrlp_user_command = 'find %s -type f | grep -v \.git | grep -v \.class | grep -v \.gradle | grep -v "/target/" | grep -v "/build/"'
+let g:ctrlp_user_command = 'find %s -type f | grep -v \.git | grep -v \.class | grep -v \.gradle | grep -v "/target/" | grep -v "/build/" | grep -v \.hg'
