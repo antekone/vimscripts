@@ -254,6 +254,10 @@ nnoremap <leader>g :GtagsCursor<CR>
 " NERD Tree {{{
 " }}}
 " vim-lsc {{{
+"
+" Those settings may be (should be) shadowed by ~/.vim-local, because
+" they depend on system installed software.
+"
 "let g:lsc_server_commands = {
 "    \ 'sh': '/usr/bin/bash-language-server start',
 "    \ 'python': '/usr/bin/pyls'
@@ -357,9 +361,7 @@ endif
 call vundle#end()
 filetype plugin indent on
 " }}}
-
-" Include local settings.
-
+" {{{ Include local settings
 source $HOME/.vim/ctrlp.vim
 
 " .vimlocal is a skeleton, is tracked in git repo, but shouldn't
@@ -371,9 +373,10 @@ else
     echo vimlocalpath . " file not found."
 endif
 
-" $HOME/.vimlocal is optional and will not be in git repo. This
-" is the file to edit instead of ~/.vim/.vimlocal.
-let vimlocal2path = expand("$HOME/.vimlocal")
+" $HOME/.vim-local is optional and will not be in git repo. This
+" is the file to edit instead of ~/.vim/.vim-local.
+let vimlocal2path = expand("$HOME/.vim-local")
 if filereadable(vimlocal2path)
     exec "source " . vimlocal2path
 endif
+" }}}
