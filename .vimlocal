@@ -2,3 +2,7 @@
 
 " vim:set ft=vim:
 let g:ctrlp_user_command = 'find %s -type f | grep -v \.git | grep -v \.class | grep -v \.gradle | grep -v "/target/" | grep -v "/build/" | grep -v \.hg'
+let g:lsc_server_commands = {
+    \ 'sh': '/usr/bin/bash-language-server start',
+    \ 'python': '/usr/bin/pyls'
+\ }

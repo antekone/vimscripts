@@ -254,10 +254,10 @@ nnoremap <leader>g :GtagsCursor<CR>
 " NERD Tree {{{
 " }}}
 " vim-lsc {{{
-let g:lsc_server_commands = {
-    \ 'sh': '/usr/bin/bash-language-server start',
-    \ 'python': '/usr/bin/pyls'
-\ }
+"let g:lsc_server_commands = {
+"    \ 'sh': '/usr/bin/bash-language-server start',
+"    \ 'python': '/usr/bin/pyls'
+"\ }
 
 let g:lsc_auto_map = {
     \ 'GoToDefinition': '<C-]>',
@@ -359,13 +359,11 @@ filetype plugin indent on
 " }}}
 
 " Include local settings.
-"
-" Examples of what could be set in there:
-"
-" Ag -> RipGrep:  let g:ag_prg="/home/antoniak/dev/rust/ripgrep/target/release/rg.exe --vimgrep"
 
 source $HOME/.vim/ctrlp.vim
 
+" .vimlocal is a skeleton, is tracked in git repo, but shouldn't
+" be modified.
 let vimlocalpath = expand("$HOME/.vim/.vimlocal")
 if filereadable(vimlocalpath)
     exec "source " . vimlocalpath
@@ -373,4 +371,9 @@ else
     echo vimlocalpath . " file not found."
 endif
 
-
+" $HOME/.vimlocal is optional and will not be in git repo. This
+" is the file to edit instead of ~/.vim/.vimlocal.
+let vimlocal2path = expand("$HOME/.vimlocal")
+if filereadable(vimlocal2path)
+    exec "source " . vimlocal2path
+endif
