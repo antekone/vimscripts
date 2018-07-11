@@ -71,7 +71,7 @@ map <F8> :Lint<CR>
 if has("win32")
     set makeprg=make.bat
 else
-    set makeprg=./make.sh
+    set makeprg=./.make.sh
 endif
 " }}}
 " Cursor stuff {{{
